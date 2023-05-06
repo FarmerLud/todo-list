@@ -1,0 +1,22 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  --white-color: #fff;
+
+  --darkgreen-color: #003233;
+  --parrot-color: #335B5C;
+  --moss-color: #668485;
+  --gray-color: #99ADAD;
+  --bond-color: #D9E0E0;
+  --light-color: #F5F7F7;
+  --cyan-color: #2F8DB3;
+  --turky-color: #5BA5C2;
+  --skyblue-color: #8DC6D9;
+  --snow-color: #E5F4F9;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
