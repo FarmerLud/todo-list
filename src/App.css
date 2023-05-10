@@ -1,11 +1,21 @@
-section {
+/* clases atómicas */
+.dpF { display: flex;}
+.fsh0 { flex-shrink: 0;}
+.fdC { flex-direction: column;}
+.aiC { align-items: center;}
+.jcC { justify-content: center;}
+
+/* ---------------*/
+
+.app {
   background-image: linear-gradient(180deg, var(--skyblue-color), var(--snow-color));
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+  overflow: auto;
 }
 
 .title {
@@ -13,7 +23,10 @@ section {
   width: 100%;
   text-align: center;
   font-size: 2.5rem;
+  margin: 1.5rem 0;
 }
+
+/* TaskList */
 
 .groupTitle {
   width: 40rem;
@@ -44,8 +57,16 @@ section {
   color: var(--parrot-color);
 }
 
+.card[data-checked=true] {
+  opacity: 0.5;
+}
+
 .text {
   font-size: 1.1rem;
+}
+
+.text[data-checked=true] {
+  text-decoration: line-through;
 }
 
 .datetime {
@@ -69,4 +90,95 @@ section {
 
 .icon {
   height: 1rem;
+}
+
+/* TaskInput */
+
+.form {
+  margin: auto;
+  width: 40rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 2.4rem;
+  background-color: var(--bond-color);
+  border-radius: 1.2rem;
+  padding: 0.3rem;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  padding-left: 0.7rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border-radius: 1rem;
+}
+
+.button {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: var(--cyan-color);
+  color: var(--white-color);
+  box-shadow: 0.25rem 0.25rem 0.25rem #5756931a;
+}
+
+.button:hover {
+  background-color: var(--darkgreen-color);
+  cursor: pointer;
+}
+
+.datetime-info {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  padding-right: 1rem;
+  color: var(--darkgreen-color);
+  color: var(--cyan-color);
+  font-weight: bold;
+}
+
+/* Calendar */
+
+.calendar-box {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--bond-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.input-date-button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.input-date-button::-webkit-calendar-picker-indicator {
+  position: absolute;
+  background: transparent;
+  color: transparent;
+  bottom: 0;
+  height: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: auto;
+  cursor: pointer;
 }

@@ -1,43 +1,49 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState, useEffect } from 'react'
+// import { useState } from 'react'
 import './App.css'
-import { TaskList } from './components/TaskList/TaskList'
-
-interface Task {
-  id: string
-  text: string
-  datetime?: string
-}
+import { TaskList } from './components/TaskList'
+import { TaskInput } from './components/TaskInput'
+import { type Task } from './types'
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 interface AppState {
   tasks: Task[]
 }
 
-const INITIAL_STATE = [
-  {
-    id: '1',
-    text: 'Esta es una tarea'
-    // datetime: ''
-  },
-  {
-    id: '2',
-    text: 'Segunda tarea del día',
-    datetime: '2023-04-30 10:00:00'
-  }
-]
-
 function App() {
-  const [tasks, setTasks] = useState<AppState['tasks']>([])
+  const { storedValue: tasks, setValue: setTasks } = useLocalStorage<
+    AppState['tasks']
+  >('tasks', [])
 
-  useEffect(() => {
-    setTasks(INITIAL_STATE)
-  }, [])
+  const handleNewTask = (newTask: Task) => {
+    setTasks([
+      ...tasks,
+      { ...newTask, id: Date.now().toString(), checked: false }
+    ])
+  }
+
+  const handleDeleteTask = (id: string) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  const handleCheckTask = (id: string) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) return { ...task, checked: !task.checked }
+      return task
+    })
+    setTasks(newTasks)
+  }
 
   return (
-    <section>
-      <div>English</div>
+    <section className="app">
+      {/* <div>English</div> */}
       <h1 className="title">YOU CAN DO IT !</h1>
-      <TaskList tasks={tasks} />
+      <TaskInput onNewTask={handleNewTask} />
+      <TaskList
+        tasks={tasks}
+        onDeleteTask={handleDeleteTask}
+        onCheckTask={handleCheckTask}
+      />
     </section>
   )
 }

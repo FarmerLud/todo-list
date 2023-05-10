@@ -29,8 +29,10 @@
         "no-undef": "off",
         "no-unused-vars": "off",
         "prettier/prettier": "error",
+        "no-extra-boolean-cast":"off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-unused-vars": "off",
         "react/react-in-jsx-scope": "off"
