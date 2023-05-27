@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import iconWhite from '../assets/icons/calendar-white.svg'
-import iconDark from '../assets/icons/calendar-dark.svg'
+import iconWhite from '@/assets/icons/calendar-white.svg'
+import iconDark from '@/assets/icons/calendar-dark.svg'
 
 interface Props {
   datetime?: string
